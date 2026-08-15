@@ -8,8 +8,15 @@ Pack.register({
 	event = "UIEnter",
 	once = true,
 	defer = true,
+	var = {
+		mock_devicons = {
+			use = true,
+			callback = function(plugin)
+				plugin.mock_nvim_web_devicons()
+			end,
+		},
+	},
 	config = function(plugin)
-		plugin.mock_nvim_web_devicons()
 		plugin.setup({
 			style = "glyph",
 			default = {

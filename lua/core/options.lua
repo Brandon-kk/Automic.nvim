@@ -1,6 +1,5 @@
 return {
 	g = {
-		mapleader = " ",
 		loaded_netrw = 1,
 		loaded_netrwPlugin = 1,
 		termguicolors = true,
