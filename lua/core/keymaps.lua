@@ -7,13 +7,37 @@ return {
 	{
 		"n",
 		"gd",
-		vim.lsp.buf.definition,
+		function()
+			Snacks.picker.lsp_definitions({
+				layout = {
+					preset = "vscode",
+					layout = {
+						width = 0.4,
+						height = 0.3,
+						min_width = 40,
+						border = "rounded",
+					},
+				},
+			})
+		end,
 		{ desc = "LSP: Go To Definition", event = "LspAttach" },
 	},
 	{
 		"n",
 		"gD",
-		vim.lsp.buf.declaration,
+		function()
+			Snacks.picker.lsp_declarations({
+				layout = {
+					preset = "vscode",
+					layout = {
+						width = 0.4,
+						height = 0.3,
+						min_width = 40,
+						border = "rounded",
+					},
+				},
+			})
+		end,
 		{ desc = "LSP: Go To Declaration", event = "LspAttach" },
 	},
 	{
@@ -77,7 +101,7 @@ return {
 						width = 0.4,
 						height = 0.3,
 						min_width = 40,
-						border = nil,
+						border = "rounded",
 					},
 				},
 			})

@@ -20,6 +20,16 @@ Pack.register({
 		transform = function(item)
 			return item.name ~= "*" and item.name ~= "vim.pack"
 		end,
+		unique_loc = function(item, ctx)
+			ctx.meta.done = ctx.meta.done or {}
+			local path = Snacks.picker.util.path(item) or item.file or ""
+			local line = item.pos and item.pos[1] or 0
+			local key = path .. ":" .. line
+			if ctx.meta.done[key] then
+				return false
+			end
+			ctx.meta.done[key] = true
+		end,
 	},
 	config = function(plugin)
 		plugin.setup({
@@ -149,6 +159,14 @@ Pack.register({
 					lsp_config = {
 						format = lsp_config_format,
 						transform = transform,
+					},
+					lsp_definitions = {
+						unique_lines = true,
+						transform = unique_loc,
+					},
+					lsp_declarations = {
+						unique_lines = true,
+						transform = unique_loc,
 					},
 				},
 				formatters = {
